@@ -1,0 +1,81 @@
+body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    text-decoration:none;
+    list-style:none;
+    
+}
+
+
+.top{
+    height: 17%;
+    
+    width: 100%;
+    background: rgb(64, 158, 245);
+    position: fixed;
+    z-index: -1;
+    }
+
+.chatPannel{
+    top:20px;
+    position: absolute; 
+    height:95%;
+    width: 98%;  
+    margin-left: 1%;
+    padding:0;
+}
+.profile-pic{
+    height:35px;
+    width:35px;
+    border-radius: 100%;
+}
+.friend-pic{
+    margin-left: -7px;
+    height:50px;
+    width:50px;
+    border-radius: 100%;
+}
+.name{
+font-weight: 500;
+
+}
+.under-name{
+    font-size: 13px;
+}
+
+.message{
+    background:whitesmoke;
+    color:black;
+    display: inline-block;
+    border-radius:1rem;
+    margin:5px;
+    font-size: 15px;
+}
+.time{
+    color:black;
+    font-size:15px;
+}
+.card{
+    height: 94vh;
+    } 
+
+#messages-list{
+    overflow-y:scroll ;
+    overflow-x: hidden;
+ }
+
+ #friend-list{
+    overflow-y:scroll ;
+    overflow-x: hidden;
+ }
+
+ .form-rounded{
+    border-radius:1rem;
+ }
+
+ .dropdown-toggle::before{
+     display: none !important;
+ }

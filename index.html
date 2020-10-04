@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Chat App</title>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://kit.fontawesome.com/2ea2abf211.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <span class="top "> </span>
+  <div class="container-fluid bg-white text-white shadow-lg chatPannel">
+    <div class="row ">
+      <!-- Pannel A  -->
+      <div class="col-2 col-sm-2 col-md-4 pr-0 ">
+        <div class="card " id="friend-list">
+          <div class="card-header">
+            <div class="row">
+              <div class="d-md-none d-none col-1 col-sm-1 col-md-1">
+                <i class="fas fa-arrow-left "></i>
+              </div>
+              <div class="col-2 col-sm-2 col-md-2 "> <img class="profile-pic" id="profile-pic" src="images/picLogo.png"
+                  alt=""> </div>
+              <div class="col-3 col-sm-3 col-md-4 ">
+                <div id="current-User" class="text-dark mt-1 d-none d-md-block">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+
+            <ul class="list-group list-group-flush d-none">
+              <li class="list-group-item" style="background:#f8f8f8">
+                <input type="text" class="form-control form-rounded" placeholder="Search">
+              </li>
+            </ul>
+            <div class="col-2 col-sm-2 col-md-8 d-none d-md-block text-dark " >
+              <div style="font-weight: 300; font-size: x-large; "> Friend List </div>
+            </div>
+            </ul>
+           
+            <!-- Friend List Pannel  -->
+            <ul class="list-group " id="showFriendList">
+              <li class="d-none list-group-item list-group-item-action">
+                <div class="row">
+                  <div class="col-2 col-sm-2 col-md-2">
+                    <img class="friend-pic" src="images/picLogo.png" alt="">
+                  </div>
+                  <div class="d-none d-md-block col-5 col-sm-5 col-md-5 text-dark ">
+                   </div>
+                </div>
+              </li>
+            
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Pannel B  -->
+      <div class="col-10 col-sm-10 col-md-8 pl-0 ">
+        <div class="card " id="chatMessage">
+          <div class="card-header">
+            <div class="row ">
+              <div class="col-10 col-sm-10 col-md-10  text-dark" style="font-weight: 300; font-size: x-large; ">
+                Group Chat
+              </div>
+          
+              <div class="col-2  col-sm-2 col-md-2">
+                <div class="dropleft text-dark ">
+                  <span class="dropdown-toggle float-right " data-toggle="dropdown">
+                    <i class="fas fa-ellipsis-v icon " style="cursor: pointer;"></i>
+                  </span>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item d-none" data-toggle="modal" data-target="#modalFriendList"
+                      onclick="populateFriendList()" href="#">New Chat</a>
+                    <a class="dropdown-item d-none" data-toggle="modal" data-target="#myModal" href="#">My model </a>
+                    <a class="dropdown-item" onclick="signIn()" id="lnkSignIn" href="#"
+                      style="display: block;">SignIn</a>
+                    <a class="dropdown-item" onclick="signOut()" id="lnkSignOut" href="#"
+                      style="display: none;">SignOut</a>
+                    <a class="dropdown-item disabled" href="#">Setting</a>
+                  </div>
+               </div>
+              </div>
+            </div>
+
+            <div class="row d-none">
+              <div class="col-2 col-sm-2 col-md-2">
+                <img class="friend-pic" src="images/picLogo.png" alt="">
+              </div>
+              <div class="col-6 col-sm-6 col-md-6 text-dark ">
+                <div class="name"> Anyname</div>
+                <div class="under-name"> This is some Text</div>
+              </div>
+              <div class="col-4 col-sm-4 col-md-4" style="font-size:20px; color:#9CA1A3">
+                <i class="fas fa-search "> </i>
+                <i class="fas fa-paperclip ml-3"></i>
+                <i class="fas fa-search ml-3"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" id="messages-list">
+
+          </div>
+
+          <div class="card-footer">
+            <div class="row ">
+              <div class="col-2 col-sm-2 col-md-2 d-none">
+                <i class="fas fa-smile fa-2x " style="color:black"></i>
+              </div>
+              <div class=" col-10 col-sm-10 col-md-11 text-dark ">
+                <input type="text" class="form-control" id="txtName">
+              </div>
+              <div class="col-2 col-sm-2 col-md-1">
+                <i class="fas fa-paper-plane d-none "
+                  style="color:green; font-weight: 500;font-size: 25px; margin-top: 9px;"></i>
+                <img onclick="sendMessage()" src="https://img.icons8.com/fluent/48/000000/filled-sent.png"
+                  style="cursor: pointer; height: 40px; width: 40px; margin-left: -10px;" />
+              </div>
+
+              <div class="col-4 col-sm-4 col-md-3 d-none" style="font-size:20px; color:#9CA1A3">
+                <i class="fas fa-microphone fa-2x" style="color:black"> </i>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase.js"></script>
+  <script src="js/firebase.init.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
